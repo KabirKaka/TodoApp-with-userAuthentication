@@ -9,11 +9,16 @@ const SignUp = (props) => {
     const [password, setPassword] = useState("");
     const [name, setName] = useState("");
     const [validPassword, setValidPassword] = useState(true)
-const [isLoading , setIsLoading] = useState(false)
-    
+    const [isLoading, setIsLoading] = useState(false)
+    const [showPassword, setShowPassword] = useState(false);
+
+    const toggleShowPassword = () => {
+        setShowPassword(prevState => !prevState)
+    }
+
 
     const addUserName = async () => {
-        
+
         try {
             updateProfile(auth.currentUser, {
                 displayName: name
@@ -39,7 +44,7 @@ const [isLoading , setIsLoading] = useState(false)
 
     const signUpHandler = (event) => {
         event.preventDefault();
-        if(validPassword){
+        if (validPassword) {
             signup();
         }
     }
@@ -47,10 +52,10 @@ const [isLoading , setIsLoading] = useState(false)
     const passwordChangeHandler = (e) => {
         setPassword(e.target.value)
         setTimeout(() => {
-            if(e.target.value < 6){
+            if (e.target.value < 6) {
                 setValidPassword(false)
             }
-            
+
         }, 2000);
         e.target.value.length >= 6 && setValidPassword(true)
     }
@@ -66,7 +71,7 @@ const [isLoading , setIsLoading] = useState(false)
                     </div>
 
                     <div className="mt-6 sm:mx-auto sm:w-full sm:max-w-sm">
-                        <form className="space-y-5" onSubmit={signUpHandler}>
+                        <form className="space-y-2" onSubmit={signUpHandler}>
                             <div>
                                 <label htmlFor="name" className="block text-sm font-medium leading-6 text-gray-900">
                                     Full Name
@@ -109,7 +114,7 @@ const [isLoading , setIsLoading] = useState(false)
                                 <div className="mt-2">
                                     <input
                                         name="password"
-                                        type="password"
+                                        type={showPassword ? "text" : "password"}
                                         autoComplete="current-password"
                                         value={password}
                                         onChange={passwordChangeHandler}
@@ -117,13 +122,18 @@ const [isLoading , setIsLoading] = useState(false)
                                         className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                     />
                                 </div>
+                                <div className='flex items-center mt-2'>
+                                    <input type='checkbox'
+                                        onClick={toggleShowPassword} className='mr-1 rounded cursor-pointer focus:ring-0 active:border-none' id='passwordCheckbox' />
+                                    <label htmlFor='passwordCheckbox'>Show Password</label>
+                                </div>
                                 {!validPassword && <p className='text-red-600'>Password should be atleast 6 characters</p>}
                             </div>
 
                             <div>
                                 <button
                                     type="submit"
-                                    className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                    className="mt-3 flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                                 >
                                     {isLoading ? "Processing..." : "Sign up"}
                                 </button>

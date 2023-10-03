@@ -9,6 +9,12 @@ const SignIn = (props) => {
     const [showResetPassword, setShowResetPassword] = useState(false);
     const [invalidCredentials, setInvalidCredentials] = useState(false)
     const [isLoading, setIsLoading] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
+
+    const toggleShowPassword = () => {
+        setShowPassword(prevState => !prevState)
+    }
+
 
     const signIn = async () => {
         setIsLoading(true)
@@ -76,7 +82,7 @@ const SignIn = (props) => {
                                     <div className="mt-2">
                                         <input
                                             name="password"
-                                            type="password"
+                                            type={showPassword ? "text" : "password"}
                                             autoComplete="current-password"
                                             value={password}
                                             onChange={(e) => setPassword(e.target.value)}
@@ -84,8 +90,13 @@ const SignIn = (props) => {
                                             className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                         />
                                     </div>
-                                    {invalidCredentials && <p className='text-red-600'>Invalid Email/Password</p>}
+                                    <div className='flex items-center mt-2'>
+                                        <input type='checkbox'
+                                            onClick={toggleShowPassword} className='mr-1 rounded cursor-pointer focus:ring-0 active:border-none' id='passwordCheckbox' />
+                                        <label htmlFor='passwordCheckbox'>Show Password</label>
+                                    </div>
                                 </div>
+                                {invalidCredentials && <p className='text-center text-red-600'>Invalid Email/Password</p>}
                                 <div>
                                     <button
                                         type="submit"
