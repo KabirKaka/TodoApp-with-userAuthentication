@@ -37,27 +37,24 @@ const SignUp = (props) => {
         }
         catch (error) {
             setEmailAlreadyInUsed(true)
-            console.log(error.message);
         }
         setIsLoading(false);
     }
 
     const signUpHandler = (event) => {
         event.preventDefault();
-        if (validPassword) {
-            signup();
+        if (password.length < 6) {
+            setValidPassword(false)
+            return
         }
+        else{
+            setValidPassword(true)
+        }
+        signup();
     }
 
     const passwordChangeHandler = (e) => {
         setPassword(e.target.value)
-        setTimeout(() => {
-            if (e.target.value < 6) {
-                setValidPassword(false)
-            }
-
-        }, 2000);
-        e.target.value.length >= 6 && setValidPassword(true)
     }
 
     return (
