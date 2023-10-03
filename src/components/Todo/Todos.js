@@ -9,6 +9,7 @@ const Todos = (props) => {
     const [todoList, setTodoList] = useState([])
     const userEmail = auth.currentUser.email
 
+
     const getData = useCallback( () => {
         const q = query(collection(db, "todoList"), orderBy("createdAt"), limit(20));
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
@@ -32,6 +33,7 @@ const Todos = (props) => {
     }, [getData])
 
     return (
+        
         <Fragment>
             <Navbar switchToSignIn = {props.switchToSignIn} />
             <TodoForm />

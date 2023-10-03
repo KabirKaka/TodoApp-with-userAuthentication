@@ -95,8 +95,8 @@ const SignIn = (props) => {
                                             onClick={toggleShowPassword} className='mr-1 rounded cursor-pointer focus:ring-0 active:border-none' id='passwordCheckbox' />
                                         <label htmlFor='passwordCheckbox'>Show Password</label>
                                     </div>
+                                {invalidCredentials && <p className=' text-red-600'>Invalid Email/Password</p>}
                                 </div>
-                                {invalidCredentials && <p className='text-center text-red-600'>Invalid Email/Password</p>}
                                 <div>
                                     <button
                                         type="submit"
