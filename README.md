@@ -1,21 +1,49 @@
-# Todo App with User Authentication 📝🔒
+# Todo App with User Authentication
 
-Welcome to the Todo App with complete user authentication! This project was developed during my React internship and comes packed with essential features to enhance your task management experience.
+A personal todo app with full email/password authentication, built with React, Firebase and Tailwind CSS during my React internship.
 
-## Key Features:
+**Live demo:** https://todo-app-with-user-authentication.vercel.app/
 
-- 🚀 **Effortless Account Creation:** Users can effortlessly create their accounts with just a few clicks.
-- 🛡️ **Secure Login & Password Reset:** Ensuring peace of mind with secure login and password reset functionalities, complete with reset links sent directly to Gmail accounts.
-- 📝 **Personalized Todo Lists:** Every user enjoys their dedicated Todo list, guaranteeing the safety of all their todos.
-- 🏡 **Intuitive Todo Home Page:** Featuring a user-friendly interface with options to sign out, add todos, and remove specific tasks.
-- ✅ **Meticulous Validation:** The authentication form includes meticulous validations, ensuring a hassle-free user experience.
+## Features
 
-## Try it Live:
+- Sign up, sign in and sign out with Firebase Authentication
+- Password reset by email
+- A private todo list for each user, stored in Firebase
+- Add and delete todos, ordered by creation time
+- Responsive UI styled with Tailwind CSS
 
-Experience the power of this Todo App with user authentication by visiting the live site here: [Todo App Live](https://todo-app-with-user-authentication.vercel.app/) 🌐🔗
+## Tech stack
 
-## Feedback and Contributions:
+- React
+- Firebase Authentication
+- Cloud Firestore
+- Tailwind CSS
+- Font Awesome
 
-Your feedback is invaluable! If you have any suggestions, find any issues, or wish to contribute to the project, please feel free to open an issue or create a pull request.
+## Getting started
 
-Let's make task management easier and more efficient together! 🚀
+Add your Firebase project config in `src/firebase.js`, then:
+
+```bash
+npm install
+npm start
+```
+
+The app runs at http://localhost:3000.
+
+## Project structure
+
+```
+src/
+├── components/
+│   ├── Todo/      # TodoForm, TodoItem, Todos
+│   ├── UI/        # Loader
+│   └── SignIn, SignUp, ResetPassword, Navbar
+└── firebase.js
+```
+
+
+## Author
+
+**Muhammad Kabir Kaka**, Frontend Engineer (React · Next.js · TypeScript)  
+[GitHub](https://github.com/KabirKaka) · [LinkedIn](https://www.linkedin.com/in/muhammad-kabir-kaka)
